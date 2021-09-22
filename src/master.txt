@@ -1,7 +1,4 @@
 This software thing is so cool
 I'm loving it and enjoying the process
-<<<<<<< HEAD
 Ansible is simple
-=======
 New line1
->>>>>>> 76f8f7093d00e27d73806c4c544a090e91f79214
