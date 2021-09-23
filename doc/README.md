@@ -4,3 +4,5 @@ This is a new change testing git soft reset
 New branch v.2
 New change soft
 line6
+
+adding a conflict line here 
