@@ -1,0 +1,29 @@
+pipeline {
+    agengt {label GOL}
+    triggers { H * * * *}
+    cron {* * * * * *}
+
+    satges{
+        stage(scm){
+            steps{
+            git https://lajashckaskcklabkckljahck
+        }
+        }
+        stage(Build){
+            steps{
+            sh mvn "clean package"
+        }
+        }
+        stage(Deploye){
+            agent {label Ansible}
+            steps{
+                sh ansible-playbook -i hosts deploye.yml   
+        }
+    }
+    post {
+        success {
+            Build is sucess
+        }
+    }
+
+}
