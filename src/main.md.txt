@@ -28,6 +28,8 @@ pipeline {
         }
     }
     post {
+        archive '**/*.war'
+        Junit '**/*-TEST.xml'
         success {
            echo "Build is sucess"
         }
