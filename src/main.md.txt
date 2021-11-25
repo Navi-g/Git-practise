@@ -1,11 +1,18 @@
 pipeline {
-    agengt {label GOL}
-    triggers { H * * * *}
-    cron {* * * * * *}
+    agengt {label 'GOL'}
+    triggers { 
+        pollSCM(H * * * *)
+        cron (* * * * * *)
+        }
+    options{
+        timeout(time:30, unit:minute)
+    }
 
     satges{
-        stage(scm){
+        stage('scm'){
             steps{
+            mail subject: 'BUILD Started '+env.BUILD_ID, to: 'devops@nk.com', from: 'jenkins@nk.com', body: 'The status can be viewed by clicking on below link "http://15.206.189.145:8080/" '
+    
             git https://lajashckaskcklabkckljahck
         }
         }
@@ -15,14 +22,14 @@ pipeline {
         }
         }
         stage(Deploye){
-            agent {label Ansible}
+            agent {label 'Ansible'}
             steps{
                 sh ansible-playbook -i hosts deploye.yml   
         }
     }
     post {
         success {
-            Build is sucess
+           echo "Build is sucess"
         }
     }
 
